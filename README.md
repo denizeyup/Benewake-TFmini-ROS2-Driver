@@ -28,7 +28,7 @@ To set up the TFmini ROS2 driver, follow these steps:
 **Launching the Driver**  
 To start the TFmini ROS2 node, use the following command:
 ```bash
-ros2 run tfmini_ros2 tfmini_ros_node
+ros2 launch tfmini_ros2 tfmini_ros2_launch.py
 ```
 
 **Topics**  
@@ -41,6 +41,24 @@ ros2 run tfmini_ros2 tfmini_ros_node
 The code in this repository includes two main source files:  
 - **tfmini_ros2_node.cpp**: Initializes the ROS2 node, handling data reading and publishing for the TFmini LiDAR sensor.  
 - **TFmini.cpp**: Contains the core driver code for interfacing with the TFmini hardware, reading sensor data, and outputting it in a format compatible with ROS2.
+
+### Port Configuration
+
+To ensure that the TFmini driver communicates with the correct serial port, you need to update the port settings in both `TFmini_ros2_node.cpp` and `tfmini_ros2_launch.py`:
+
+1. **In `TFmini_ros2_node.cpp`**  
+   Locate the line:
+   ```cpp
+   node->declare_parameter("serial_port", "/dev/serial/your/port");
+   ```
+   Replace `"/dev/serial/your/port"` with the path to your device's port (e.g., `/dev/ttyUSB0`).
+
+2. **In `tfmini_ros2_launch.py`**  
+   Locate the line:
+   ```python
+   'serial_port': '/your/port',
+   ```
+   Update `'/your/port'` with your device's actual port (e.g., `/dev/ttyUSB0`).
 
 ### Package Configuration
 
