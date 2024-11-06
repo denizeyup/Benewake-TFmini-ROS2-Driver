@@ -26,8 +26,10 @@ To set up the TFmini ROS2 driver, follow these steps:
 ## Core Features
 
 **Launching the Driver**  
-To start the TFmini ROS2 node, use the following command:  
-`ros2 run tfmini_ros2 tfmini_ros_node`
+To start the TFmini ROS2 node, use the following command:
+```bash
+ros2 run tfmini_ros2 tfmini_ros_node
+```
 
 **Topics**  
 - **Published Topic:** `/tfmini/range`  
